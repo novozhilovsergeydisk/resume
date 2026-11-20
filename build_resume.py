@@ -64,6 +64,7 @@ LINKS = [
     ("telepat.online", "https://telepat.online"),
     ("github.com/novozhilovsergeydisk/resume",
      "https://github.com/novozhilovsergeydisk/resume"),
+    ("github.com/novozhilovsergeydisk", "https://github.com/novozhilovsergeydisk"),
     ("softkey.lv", "https://softkey.lv"),
     ("softkey.lt", "https://softkey.lt"),
     ("wishkey.ru", "https://wishkey.ru"),
@@ -85,7 +86,7 @@ HEADER = {
         "Мужчина, 63 года, родился 7 января 1963",
         "+7 (916) 3465407",
         "sergionov@mail.ru — предпочитаемый способ связи",
-        "GitHub: github.com/novozhilovsergeydisk/resume",
+        "GitHub: github.com/novozhilovsergeydisk",
         "Гражданство: Россия, есть разрешение на работу: Россия",
     ],
 }
