@@ -23,8 +23,8 @@ SALARY_PDF = ("100 000 <font face=\"HN\">" + html.escape("₽") + "</font> на 
 
 from PIL import Image, ImageDraw, ImageFont
 
-OG_TITLE = "Новожилов Сергей Юрьевич — Web-разработчик"
-OG_DESC = ("Web-разработчик / Full-stack, 19 лет опыта: PHP, PostgreSQL, Laravel, "
+OG_TITLE = "Новожилов Сергей Юрьевич — Web-разработка"
+OG_DESC = ("Web-разработка / Full-stack, 19 лет опыта: PHP, PostgreSQL, Laravel, "
            "Linux-инфраструктура. Автоматизация процессов разработки с помощью ИИ "
            "(Claude, ChatGPT, Gemini, Kimi, Qwen).")
 SITE_URL = "https://novozhilovsergeydisk.github.io/resume/"
@@ -91,7 +91,7 @@ HEADER = {
 }
 
 POSITION = {
-    "title": "Web-разработчик",
+    "title": "Web-разработка",
     "salary": "100 000 ₽ на руки",
     "lines": [
         "Специализации: — Программист, разработчик",
