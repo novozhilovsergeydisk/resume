@@ -71,6 +71,7 @@ LINKS = [
     ("slavhol.ru", "https://slavhol.ru"),
     ("italymania.ru", "https://italymania.ru"),
     ("servicetrend.ru", "https://servicetrend.ru"),
+    ("koderstudio.ru", "https://koderstudio.ru"),
 ]
 
 
@@ -257,6 +258,8 @@ PRO_SKILLS = [
      "(например, введение пространств имён, анонимных функций, типизации, JIT-компиляции)."),
     ("Дополнительно: использование Node.js при создании приложений, чат-сервисов и "
      "телеграм-ботов."),
+    ("Веду собственный проект Koder Studio (koderstudio.ru) — разработка сайтов, "
+     "информационных систем и инфраструктуры."),
 ]
 
 QUALITIES_TITLE = "Личные качества"
