@@ -64,7 +64,6 @@ LINKS = [
     ("telepat.online", "https://telepat.online"),
     ("github.com/novozhilovsergeydisk/resume",
      "https://github.com/novozhilovsergeydisk/resume"),
-    ("softkey.ru", "https://softkey.ru"),
     ("softkey.lv", "https://softkey.lv"),
     ("softkey.lt", "https://softkey.lt"),
     ("wishkey.ru", "https://wishkey.ru"),
