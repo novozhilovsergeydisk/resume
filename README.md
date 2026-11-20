@@ -6,6 +6,8 @@
 
 📄 [Скачать резюме в PDF](Новожилов%20Сергей%20Юрьевич.pdf)
 
+💻 Код: [pg16-cert-prep](https://github.com/novozhilovsergeydisk/pg16-cert-prep) (подготовка к сертификации PostgreSQL) · [vox-platform](https://github.com/novozhilovsergeydisk/vox-platform) · [resume](https://github.com/novozhilovsergeydisk/resume) (исходники этого сайта)
+
 Полная занятость · на месте работодателя / удалённо / гибрид
 
 ---

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Генератор обновлённого резюме: PDF (reportlab) и DOCX (HTML + textutil)."""
 import html
+import re
 import subprocess
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
@@ -73,13 +74,17 @@ LINKS = [
     ("servicetrend.ru", "https://servicetrend.ru"),
     ("koderstudio.ru", "https://koderstudio.ru"),
     ("medsenger.ru", "https://medsenger.ru"),
+    ("pg16-cert-prep", "https://github.com/novozhilovsergeydisk/pg16-cert-prep"),
+    ("vox-platform", "https://github.com/novozhilovsergeydisk/vox-platform"),
+    ("resume", "https://github.com/novozhilovsergeydisk/resume"),
 ]
 
 
 def linkify(text):
-    for domain, url in LINKS:
-        text = text.replace(domain, f'<a href="{url}">{domain}</a>')
-    return text
+    pairs = sorted(LINKS, key=lambda x: -len(x[0]))
+    pattern = re.compile("|".join(re.escape(d) for d, _ in pairs))
+    urls = dict(pairs)
+    return pattern.sub(lambda m: f'<a href="{urls[m.group(0)]}">{m.group(0)}</a>', text)
 
 # ---------------------------------------------------------------- данные ---
 HEADER = {
@@ -89,6 +94,8 @@ HEADER = {
         "+7 (916) 3465407",
         "sergionov@mail.ru — предпочитаемый способ связи",
         "GitHub: github.com/novozhilovsergeydisk",
+        "Код: pg16-cert-prep (подготовка к сертификации PostgreSQL) · vox-platform · "
+        "resume (исходники этого сайта)",
         "Гражданство: Россия, есть разрешение на работу: Россия",
     ],
 }
@@ -304,7 +311,7 @@ def hr():
                       spaceBefore=1, spaceAfter=5)
 
 def P(text, style="hdr"):
-    return Paragraph(html.escape(text), S[style])
+    return Paragraph(linkify(html.escape(text)), S[style])
 
 # ------------------------------------------------------------------- PDF ---
 def build_pdf(path):
@@ -326,7 +333,7 @@ def build_pdf(path):
     el.append(P(PRO_SKILLS_TITLE, "sec"))
     el.append(hr())
     for b in PRO_SKILLS:
-        el.append(Paragraph("•&nbsp;&nbsp;" + html.escape(b), S["bullet"]))
+        el.append(Paragraph("•&nbsp;&nbsp;" + linkify(html.escape(b)), S["bullet"]))
     el.append(Spacer(1, 4))
     el.append(P(EXPERIENCE_TITLE, "sec"))
     el.append(hr())
@@ -338,7 +345,7 @@ def build_pdf(path):
         el.append(P(job["position"], "posname"))
         el.append(Spacer(1, 2))
         for b in job["bullets"]:
-            el.append(Paragraph("•&nbsp;&nbsp;" + html.escape(b), S["bullet"]))
+            el.append(Paragraph("•&nbsp;&nbsp;" + linkify(html.escape(b)), S["bullet"]))
         el.append(Spacer(1, 6))
     el.append(P(EDUCATION["title"], "sec"))
     el.append(hr())
