@@ -23,8 +23,8 @@ SALARY_PDF = ("100 000 <font face=\"HN\">" + html.escape("₽") + "</font> на 
 
 from PIL import Image, ImageDraw, ImageFont
 
-OG_TITLE = "Новожилов Сергей Юрьевич — PHP-разработчик"
-OG_DESC = ("PHP-разработчик / Full-stack Developer, 19 лет опыта: PHP, PostgreSQL, Laravel, "
+OG_TITLE = "Новожилов Сергей Юрьевич — Web-разработчик"
+OG_DESC = ("Web-разработчик / Full-stack, 19 лет опыта: PHP, PostgreSQL, Laravel, "
            "Linux-инфраструктура. Автоматизация процессов разработки с помощью ИИ "
            "(Claude, ChatGPT, Gemini, Kimi, Qwen).")
 SITE_URL = "https://novozhilovsergeydisk.github.io/resume/"
@@ -91,7 +91,7 @@ HEADER = {
 }
 
 POSITION = {
-    "title": "PHP developer (Web-разработчик)",
+    "title": "Web-разработчик",
     "salary": "100 000 ₽ на руки",
     "lines": [
         "Специализации: — Программист, разработчик",
@@ -118,6 +118,10 @@ JOBS = [
              "разработка и развитие системы."),
             ("Интеграция «Системы управления заявками» со складом и сайтом "
              "«Монтаж оборудования и слаботочных систем» (lan-install.ru)."),
+            ("Автоматизация процессов разработки с помощью систем искусственного интеллекта: "
+             "Claude (Claude Code, Claude CLI), ChatGPT (Codex, Codex CLI), Gemini, Kimi K3 Pro, "
+             "Qwen Code — генерация и рефакторинг кода, автоматизация рутинных задач, анализ "
+             "логов и ускорение документирования."),
             ("Разработка и поддержка медицинских приложений на PHP: проектирование архитектуры, "
              "реализация прикладной логики, интеграция с внешними API."),
             ("Поддержка и доработка старых проектов: рефакторинг кода, оптимизация "
@@ -130,10 +134,6 @@ JOBS = [
              "конфигурацию TLS, DKIM, SPF, веб-интерфейсов администрирования."),
             ("Обеспечение стабильной и безопасной работы СУБД PostgreSQL: резервное копирование, "
              "оптимизация запросов."),
-            ("Автоматизация процессов разработки с помощью систем искусственного интеллекта: "
-             "Claude (Claude Code, Claude CLI), ChatGPT (Codex, Codex CLI), Gemini, Kimi K3 Pro, "
-             "Qwen Code — генерация и рефакторинг кода, автоматизация рутинных задач, анализ "
-             "логов и ускорение документирования."),
             ("Тесное взаимодействие с командой: участие в планировании задач, написание "
              "технической документации."),
         ],
@@ -234,7 +234,6 @@ SKILLS = [
     "JetBrains PhpStorm", "Borland Delphi",
 ]
 
-LANGUAGES = "Русский — родной"
 DRIVE = "Права категории B"
 
 ABOUT = [
@@ -346,9 +345,6 @@ def build_pdf(path):
     el.append(P("Навыки", "sec"))
     el.append(hr())
     el.append(P(" · ".join(SKILLS), "chip"))
-    el.append(P("Знание языков", "sec"))
-    el.append(hr())
-    el.append(P(LANGUAGES))
     el.append(P("Опыт вождения", "sec"))
     el.append(hr())
     el.append(P(DRIVE))
@@ -438,8 +434,6 @@ p { margin: 2pt 0; }
         out.append(f"<p>{block}</p>")
     out.append("<h2>Навыки</h2>")
     out.append(f"<p class='skills'>{e(' · '.join(SKILLS))}</p>")
-    out.append("<h2>Знание языков</h2>")
-    out.append(f"<p>{e(LANGUAGES)}</p>")
     out.append("<h2>Опыт вождения</h2>")
     out.append(f"<p>{e(DRIVE)}</p>")
     out.append("<h2>Дополнительная информация — обо мне</h2>")
