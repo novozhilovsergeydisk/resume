@@ -19,7 +19,7 @@ pdfmetrics.registerFontFamily("Arial", normal="Arial", bold="Arial-Bold")
 pdfmetrics.registerFont(TTFont("HN", "/System/Library/Fonts/HelveticaNeue.ttc",
                                subfontIndex=0))
 
-SALARY_PDF = ("120 000 <font face=\"HN\">" + html.escape("₽") + "</font> на руки")
+SALARY_PDF = ("100 000 <font face=\"HN\">" + html.escape("₽") + "</font> на руки")
 
 # ---------------------------------------------------------------- данные ---
 HEADER = {
@@ -35,7 +35,7 @@ HEADER = {
 
 POSITION = {
     "title": "PHP developer (Web-разработчик)",
-    "salary": "120 000 ₽ на руки",
+    "salary": "100 000 ₽ на руки",
     "lines": [
         "Специализации: — Программист, разработчик",
         "Тип занятости: полная занятость",
