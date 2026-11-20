@@ -220,7 +220,7 @@ TRAINING = {
         {
             "year": "2026",
             "org": "Сертификация PostgreSQL",
-            "program": "Подготовка к сертификации — в процессе",
+            "program": "Активная подготовка к сертификации",
             "detail": "",
         },
     ],
@@ -231,7 +231,7 @@ SKILLS = [
     "PostgreSQL", "ORACLE", "Power BI", "phpMyAdmin", "Git", "Docker", "Bash", "Ubuntu", "Debian",
     "Nginx", "AI CLI-инструменты", "Claude Code", "Claude CLI", "ChatGPT Codex",
     "Codex CLI", "Gemini", "Kimi K3 Pro", "Qwen Code", "Visual Studio Code", "Windsurf",
-    "JetBrains PhpStorm", "Borland Delphi",
+    "JetBrains PhpStorm",
 ]
 
 DRIVE = "Права категории B"

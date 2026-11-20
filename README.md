@@ -72,13 +72,13 @@
 Программа «Аналитик данных нового поколения: SQL, ИИ и Power BI», в объёме 144 часов
 Удостоверение о повышении квалификации, рег. № 162359 от 21.09.2026
 
-**2026** — Сертификация PostgreSQL: подготовка в процессе
+**2026** — Сертификация PostgreSQL: активная подготовка
 
 ---
 
 ## Навыки
 
-PHP · MySQL · HTML5 · CSS3 · JavaScript · Laravel · Node.js · PostgreSQL · ORACLE · Power BI · phpMyAdmin · Git · Docker · Bash · Ubuntu · Debian · Nginx · AI CLI-инструменты (Claude Code, Claude CLI, ChatGPT Codex, Codex CLI, Gemini, Kimi K3 Pro, Qwen Code) · Visual Studio Code · Windsurf · JetBrains PhpStorm · Borland Delphi
+PHP · MySQL · HTML5 · CSS3 · JavaScript · Laravel · Node.js · PostgreSQL · ORACLE · Power BI · phpMyAdmin · Git · Docker · Bash · Ubuntu · Debian · Nginx · AI CLI-инструменты (Claude Code, Claude CLI, ChatGPT Codex, Codex CLI, Gemini, Kimi K3 Pro, Qwen Code) · Visual Studio Code · Windsurf · JetBrains PhpStorm
 
 ## Личные качества
 
