@@ -2,8 +2,6 @@
 
 **PHP developer (Web-разработчик)** · 120 000 ₽ на руки
 
-Москва, м. Выхино · готов к командировкам, не готов к переезду
-
 📧 sergionov@mail.ru (предпочитаемый способ связи) · 📞 +7 (916) 3465407
 
 📄 [Скачать резюме в PDF](Новожилов%20Сергей%20Юрьевич.pdf)
@@ -66,7 +64,7 @@
 
 ## Навыки
 
-PHP · MySQL · HTML5 · CSS3 · JavaScript · Laravel · React · Node.js · PostgreSQL · ORACLE · Power BI · phpMyAdmin · Git · Docker · Bash · Ubuntu · Debian · Nginx · AI CLI-инструменты (Claude Code, Claude CLI, ChatGPT Codex, Codex CLI, Gemini, Kimi K3 Pro, Qwen Code) · Visual Studio Code · Windsurf · JetBrains PhpStorm · Borland Delphi
+PHP · MySQL · HTML5 · CSS3 · JavaScript · Laravel · Node.js · PostgreSQL · ORACLE · Power BI · phpMyAdmin · Git · Docker · Bash · Ubuntu · Debian · Nginx · AI CLI-инструменты (Claude Code, Claude CLI, ChatGPT Codex, Codex CLI, Gemini, Kimi K3 Pro, Qwen Code) · Visual Studio Code · Windsurf · JetBrains PhpStorm · Borland Delphi
 
 ## Обо мне
 

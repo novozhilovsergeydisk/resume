@@ -166,7 +166,7 @@ TRAINING = {
 }
 
 SKILLS = [
-    "PHP", "MySQL", "HTML5", "CSS3", "JavaScript", "Laravel", "React", "Node.js",
+    "PHP", "MySQL", "HTML5", "CSS3", "JavaScript", "Laravel", "Node.js",
     "PostgreSQL", "ORACLE", "Power BI", "phpMyAdmin", "Git", "Docker", "Bash", "Ubuntu", "Debian",
     "Nginx", "AI CLI-инструменты", "Claude Code", "Claude CLI", "ChatGPT Codex",
     "Codex CLI", "Gemini", "Kimi K3 Pro", "Qwen Code", "Visual Studio Code", "Windsurf",
