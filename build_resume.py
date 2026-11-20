@@ -236,34 +236,33 @@ SKILLS = [
 
 DRIVE = "Права категории B"
 
-ABOUT = [
-    ("Профессиональные навыки", None),
+PRO_SKILLS_TITLE = "Профессиональные навыки"
+PRO_SKILLS = [
     ("Инструменты разработки: активное использование Windsurf, Visual Studio Code и JetBrains "
      "PhpStorm, работа с Git, написание bash-скриптов. Активная работа с системами "
      "искусственного интеллекта — Claude (Claude Code, Claude CLI), ChatGPT (Codex, "
      "Codex CLI), Gemini, Kimi K3 Pro, Qwen Code — для автоматизации процессов разработки "
-     "(генерация и рефакторинг кода, анализ логов, документирование).", "bullet"),
+     "(генерация и рефакторинг кода, анализ логов, документирование)."),
     ("Фреймворки: практический опыт работы с Laravel — понимание принципов MVC-архитектуры, "
-     "сервис-контейнера, middleware, очередей и событийной модели.", "bullet"),
+     "сервис-контейнера, middleware, очередей и событийной модели."),
     ("Базы данных: уверенная работа с PostgreSQL (включая оптимизацию запросов, индексацию, "
-     "репликацию, резервное копирование), а также опыт с MySQL и Oracle.", "bullet"),
+     "репликацию, резервное копирование), а также опыт с MySQL и Oracle."),
     ("Frontend: владение HTML5, CSS3, JavaScript (современный стандарт ES6+: const/let, "
-     "стрелочные функции, деструктуризация, модули import/export, async/await, Promise).",
-     "bullet"),
+     "стрелочные функции, деструктуризация, модули import/export, async/await, Promise)."),
     ("Серверная инфраструктура: настройка, развёртывание и поддержка веб-приложений на "
      "Ubuntu и Debian (включая Nginx/Apache, PHP-FPM, PostgreSQL, системные службы systemd, "
-     "supervisor, безопасность fail2ban, ufw).", "bullet"),
+     "supervisor, безопасность fail2ban, ufw)."),
     ("PHP: понимание эволюции языка от версии 5.3 до 8.x, включая ключевые изменения "
-     "(например, введение пространств имён, анонимных функций, типизации, JIT-компиляции).",
-     "bullet"),
+     "(например, введение пространств имён, анонимных функций, типизации, JIT-компиляции)."),
     ("Дополнительно: использование Node.js при создании приложений, чат-сервисов и "
-     "телеграм-ботов.", "bullet"),
-    ("Личные качества", None),
-    ("Самодисциплина, коммуникабельность, способность быстро включаться в работу. Стремление "
-     "к постоянному профессиональному росту и применению современных IT-решений на практике — "
-     "в том числе с использованием возможностей искусственного интеллекта для повышения "
-     "эффективности разработки.", "text"),
+     "телеграм-ботов."),
 ]
+
+QUALITIES_TITLE = "Личные качества"
+QUALITIES = ("Самодисциплина, коммуникабельность, способность быстро включаться в работу. "
+             "Стремление к постоянному профессиональному росту и применению современных "
+             "IT-решений на практике — в том числе с использованием возможностей "
+             "искусственного интеллекта для повышения эффективности разработки.")
 
 UPDATED = "Резюме обновлено 20 ноября 2026"
 
@@ -318,6 +317,11 @@ def build_pdf(path):
     for ln in POSITION["lines"]:
         el.append(P(ln))
     el.append(Spacer(1, 4))
+    el.append(P(PRO_SKILLS_TITLE, "sec"))
+    el.append(hr())
+    for b in PRO_SKILLS:
+        el.append(Paragraph("•&nbsp;&nbsp;" + html.escape(b), S["bullet"]))
+    el.append(Spacer(1, 4))
     el.append(P(EXPERIENCE_TITLE, "sec"))
     el.append(hr())
     for job in JOBS:
@@ -348,16 +352,9 @@ def build_pdf(path):
     el.append(P("Опыт вождения", "sec"))
     el.append(hr())
     el.append(P(DRIVE))
-    el.append(P("Дополнительная информация — обо мне", "sec"))
+    el.append(P(QUALITIES_TITLE, "sec"))
     el.append(hr())
-    for text, kind in ABOUT:
-        if kind is None:
-            el.append(P(text, "posname"))
-            el.append(Spacer(1, 1.5))
-        elif kind == "bullet":
-            el.append(Paragraph("•&nbsp;&nbsp;" + html.escape(text), S["bullet"]))
-        else:
-            el.append(P(text))
+    el.append(P(QUALITIES))
     el.append(Spacer(1, 10))
     el.append(hr())
     el.append(P(f'Новожилов Сергей · {UPDATED}', "foot"))
@@ -411,6 +408,10 @@ p { margin: 2pt 0; }
     out.append(f"<p class='pos'>{e(POSITION['salary'])}</p>")
     for ln in POSITION["lines"]:
         out.append(f"<p>{e(ln)}</p>")
+    out.append(f"<h2>{e(PRO_SKILLS_TITLE)}</h2><ul>")
+    for b in PRO_SKILLS:
+        out.append(f"<li>{e(b)}</li>")
+    out.append("</ul>")
     out.append(f"<h2>{e(EXPERIENCE_TITLE)}</h2>")
     for job in JOBS:
         out.append(f"<p class='company'>{e(job['company'])}</p>")
@@ -436,14 +437,8 @@ p { margin: 2pt 0; }
     out.append(f"<p class='skills'>{e(' · '.join(SKILLS))}</p>")
     out.append("<h2>Опыт вождения</h2>")
     out.append(f"<p>{e(DRIVE)}</p>")
-    out.append("<h2>Дополнительная информация — обо мне</h2>")
-    for text, kind in ABOUT:
-        if kind is None:
-            out.append(f"<p><b>{e(text)}</b></p>")
-        elif kind == "bullet":
-            out.append(f"<p>• {e(text)}</p>")
-        else:
-            out.append(f"<p>{e(text)}</p>")
+    out.append(f"<h2>{e(QUALITIES_TITLE)}</h2>")
+    out.append(f"<p>{e(QUALITIES)}</p>")
     out.append(f"<p class='foot'>Новожилов Сергей · {e(UPDATED)}</p>")
     out.append("</body></html>")
     with open(path, "w", encoding="utf-8") as f:
