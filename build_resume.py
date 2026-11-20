@@ -160,6 +160,12 @@ TRAINING = {
                        "в объёме 144 часов",
             "detail": "удостоверение о повышении квалификации, рег. № 162359 от 21.09.2026",
         },
+        {
+            "year": "2026",
+            "org": "Сертификация PostgreSQL",
+            "program": "Подготовка к сертификации — в процессе",
+            "detail": "",
+        },
     ],
 }
 
@@ -278,7 +284,8 @@ def build_pdf(path):
     for it in TRAINING["items"]:
         el.append(P(f'{it["year"]} — {it["org"]}', "posname"))
         el.append(P(it["program"]))
-        el.append(P(it["detail"], "meta"))
+        if it["detail"]:
+            el.append(P(it["detail"], "meta"))
     el.append(P("Навыки", "sec"))
     el.append(hr())
     el.append(P(" · ".join(SKILLS), "chip"))
@@ -347,8 +354,10 @@ p { margin: 2pt 0; }
         out.append(f"<p>{e(ln)}</p>")
     out.append(f"<h2>{e(TRAINING['title'])}</h2>")
     for it in TRAINING["items"]:
-        out.append(f"<p><b>{e(it['year'])} — {e(it['org'])}</b><br>{e(it['program'])}<br>"
-                   f"<span class='meta'>{e(it['detail'])}</span></p>")
+        block = f"<b>{e(it['year'])} — {e(it['org'])}</b><br>{e(it['program'])}"
+        if it["detail"]:
+            block += f"<br><span class='meta'>{e(it['detail'])}</span>"
+        out.append(f"<p>{block}</p>")
     out.append("<h2>Навыки</h2>")
     out.append(f"<p class='skills'>{e(' · '.join(SKILLS))}</p>")
     out.append("<h2>Знание языков</h2>")
