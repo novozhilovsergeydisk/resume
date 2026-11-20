@@ -21,6 +21,42 @@ pdfmetrics.registerFont(TTFont("HN", "/System/Library/Fonts/HelveticaNeue.ttc",
 
 SALARY_PDF = ("100 000 <font face=\"HN\">" + html.escape("₽") + "</font> на руки")
 
+from PIL import Image, ImageDraw, ImageFont
+
+OG_TITLE = "Новожилов Сергей Юрьевич — PHP-разработчик"
+OG_DESC = ("PHP-разработчик / Full-stack Developer, 19 лет опыта: PHP, PostgreSQL, Laravel, "
+           "Linux-инфраструктура. Автоматизация процессов разработки с помощью ИИ "
+           "(Claude, ChatGPT, Gemini, Kimi, Qwen).")
+SITE_URL = "https://novozhilovsergeydisk.github.io/resume/"
+
+
+def make_favicon(path, size=256):
+    img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([0, 0, size - 1, size - 1], radius=int(size * 0.22), fill="#0f151c")
+    font = ImageFont.truetype(FONTS_DIR + "Arial Bold.ttf", int(size * 0.48))
+    text = "НС"
+    bbox = d.textbbox((0, 0), text, font=font)
+    d.text(((size - (bbox[2] - bbox[0])) / 2 - bbox[0],
+            (size - (bbox[3] - bbox[1])) / 2 - bbox[1]), text, font=font, fill="white")
+    img.save(path)
+
+
+def make_og(path):
+    img = Image.new("RGB", (1200, 630), "#0f151c")
+    d = ImageDraw.Draw(img)
+    f_name = ImageFont.truetype(FONTS_DIR + "Arial Bold.ttf", 72)
+    f_role = ImageFont.truetype(FONTS_DIR + "Arial Bold.ttf", 44)
+    f_small = ImageFont.truetype(FONTS_DIR + "Arial.ttf", 34)
+    d.rectangle([0, 0, 14, 630], fill="#2f9e63")
+    d.text((70, 140), "Новожилов Сергей Юрьевич", font=f_name, fill="white")
+    d.text((70, 250), "PHP-разработчик / Full-stack Developer", font=f_role, fill="#9fd4b8")
+    d.text((70, 360), "19 лет опыта · PHP · PostgreSQL · Laravel", font=f_small, fill="#c8cfd6")
+    d.text((70, 420), "Автоматизация процессов разработки с помощью ИИ", font=f_small,
+           fill="#c8cfd6")
+    d.text((70, 480), "Claude · ChatGPT · Gemini · Kimi · Qwen", font=f_small, fill="#8a94a0")
+    img.save(path)
+
 # ---------------------------------------------------------------- данные ---
 HEADER = {
     "name": "Новожилов Сергей Юрьевич",
@@ -311,11 +347,23 @@ def build_pdf(path):
     doc.build(el)
 
 # ------------------------------------------------------------------ HTML ---
-def build_html(path):
+def build_html(path, site=False):
     e = html.escape
     out = []
-    out.append("""<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+    head = ['<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8">']
+    if site:
+        head.append(f"<title>{html.escape(OG_TITLE)}</title>")
+        head.append('<meta name="viewport" content="width=device-width, initial-scale=1">')
+        head.append(f'<meta name="description" content="{html.escape(OG_DESC)}">')
+        head.append('<meta property="og:type" content="profile">')
+        head.append(f'<meta property="og:title" content="{html.escape(OG_TITLE)}">')
+        head.append(f'<meta property="og:description" content="{html.escape(OG_DESC)}">')
+        head.append(f'<meta property="og:url" content="{SITE_URL}">')
+        head.append(f'<meta property="og:image" content="{SITE_URL}og-image.png">')
+        head.append('<link rel="icon" type="image/png" href="favicon.png">')
+    head.append("""<style>
 body { font-family: Arial, sans-serif; font-size: 10pt; color: #1a1a1a; line-height: 1.35; }
+.wrap { max-width: 800px; margin: 0 auto; padding: 28px 20px; }
 h1 { font-size: 18pt; margin: 0 0 4pt 0; }
 h2 { font-size: 12.5pt; margin: 12pt 0 3pt 0; border-bottom: 0.7pt solid #c8cfd6;
      padding-bottom: 2pt; }
@@ -328,7 +376,9 @@ p { margin: 2pt 0; }
 .skills { line-height: 1.6; }
 .foot { color: #8a94a0; font-size: 8pt; margin-top: 10pt;
         border-top: 0.7pt solid #c8cfd6; padding-top: 3pt; }
-</style></head><body>""")
+</style></head>""")
+    out.append("".join(head))
+    out.append("<body" + (" class='wrap'" if site else "") + ">")
     out.append(f"<h1>{e(HEADER['name'])}</h1>")
     for ln in HEADER["lines"]:
         out.append(f"<p>{e(ln)}</p>")
@@ -388,6 +438,9 @@ if __name__ == "__main__":
     subprocess.run(["textutil", "-convert", "docx", html_path, "-output", docx_path],
                    check=True)
     os.remove(html_path)
+    build_html(os.path.join(outdir, "index.html"), site=True)
+    make_favicon(os.path.join(outdir, "favicon.png"))
+    make_og(os.path.join(outdir, "og-image.png"))
     print("OK:")
     print(" ", pdf_path)
     print(" ", docx_path)
