@@ -406,7 +406,14 @@ p { margin: 2pt 0; }
 .skills { line-height: 1.6; }
 .foot { color: #8a94a0; font-size: 8pt; margin-top: 10pt;
         border-top: 0.7pt solid #c8cfd6; padding-top: 3pt; }
-</style></head>""")
+</style>""")
+    if site:
+        head.append("""<style>
+h1, h2, .pos, .company { color: #0f151c; }
+h2 { border-bottom: 1.4pt solid #2f9e63; }
+a { color: #1f7a4d; }
+</style>""")
+    head.append("</head>")
     out.append("".join(head))
     out.append("<body" + (" class='wrap'" if site else "") + ">")
     out.append(f"<h1>{e(HEADER['name'])}</h1>")
