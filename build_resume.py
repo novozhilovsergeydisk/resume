@@ -57,6 +57,28 @@ def make_og(path):
     d.text((70, 480), "Claude · ChatGPT · Gemini · Kimi · Qwen", font=f_small, fill="#8a94a0")
     img.save(path)
 
+LINKS = [
+    ("voucher.italymania.ru", "https://voucher.italymania.ru"),
+    ("lan-install.online", "https://lan-install.online"),
+    ("lan-install.ru", "https://lan-install.ru"),
+    ("telepat.online", "https://telepat.online"),
+    ("github.com/novozhilovsergeydisk/resume",
+     "https://github.com/novozhilovsergeydisk/resume"),
+    ("softkey.ru", "https://softkey.ru"),
+    ("softkey.lv", "https://softkey.lv"),
+    ("softkey.lt", "https://softkey.lt"),
+    ("wishkey.ru", "https://wishkey.ru"),
+    ("slavhol.ru", "https://slavhol.ru"),
+    ("italymania.ru", "https://italymania.ru"),
+    ("servicetrend.ru", "https://servicetrend.ru"),
+]
+
+
+def linkify(text):
+    for domain, url in LINKS:
+        text = text.replace(domain, f'<a href="{url}">{domain}</a>')
+    return text
+
 # ---------------------------------------------------------------- данные ---
 HEADER = {
     "name": "Новожилов Сергей Юрьевич",
@@ -349,6 +371,9 @@ def build_pdf(path):
 # ------------------------------------------------------------------ HTML ---
 def build_html(path, site=False):
     e = html.escape
+    if site:
+        def e(s, _esc=html.escape):
+            return linkify(_esc(s))
     out = []
     head = ['<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8">']
     if site:
@@ -382,6 +407,10 @@ p { margin: 2pt 0; }
     out.append(f"<h1>{e(HEADER['name'])}</h1>")
     for ln in HEADER["lines"]:
         out.append(f"<p>{e(ln)}</p>")
+    if site:
+        from urllib.parse import quote
+        pdf_href = quote("Новожилов Сергей Юрьевич.pdf")
+        out.append(f'<p>📄 <a href="{pdf_href}">Скачать резюме в PDF</a></p>')
     out.append("<h2>Желаемая должность и зарплата</h2>")
     out.append(f"<p class='pos'>{e(POSITION['title'])}</p>")
     out.append(f"<p class='pos'>{e(POSITION['salary'])}</p>")
