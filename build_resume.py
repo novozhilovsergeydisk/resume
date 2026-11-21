@@ -25,6 +25,11 @@ SALARY_PDF = ("100 000 <font face=\"HN\">" + html.escape("₽") + "</font> на 
 from PIL import Image, ImageDraw, ImageFont
 
 OG_TITLE = "Новожилов Сергей Юрьевич — Web-разработчик / Full-stack"
+SITE_SUMMARY = (
+    "Разрабатываю веб-приложения от интерфейса и API до базы данных и развёртывания. "
+    "Использую ИИ-инструменты для рефакторинга кода, анализа логов и подготовки "
+    "технической документации."
+)
 OG_DESC = ("Web-разработчик / Full-stack разработчик, 19 лет опыта: PHP, PostgreSQL, Laravel, "
            "Linux-инфраструктура. Автоматизация процессов разработки с помощью ИИ "
            "(Claude, ChatGPT, Gemini, Kimi, Qwen).")
@@ -419,6 +424,8 @@ a { color: #1f7a4d; }
         out.append(f'<p>📄 <a href="{pdf_href}">Скачать резюме в PDF</a></p>')
     out.append("<h2>Желаемая должность и зарплата</h2>")
     out.append(f"<p class='pos'>{e(POSITION['title'])}</p>")
+    if site:
+        out.append(f"<p>{e(SITE_SUMMARY)}</p>")
     out.append(f"<p class='pos'>{e(POSITION['salary'])}</p>")
     for ln in POSITION["lines"]:
         out.append(f"<p>{e(ln)}</p>")
