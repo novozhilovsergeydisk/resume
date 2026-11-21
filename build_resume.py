@@ -3,6 +3,10 @@
 import html
 import re
 import subprocess
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from xml.dom import minidom
+from zipfile import ZipFile
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
@@ -34,6 +38,10 @@ OG_DESC = ("Web-разработчик / Full-stack разработчик, 19 �
            "Linux-инфраструктура. Автоматизация процессов разработки с помощью ИИ "
            "(Claude, ChatGPT, Gemini, Kimi, Qwen).")
 SITE_URL = "https://novozhilovsergeydisk.github.io/resume/"
+SCREENSHOTS_PATH = "postgresql16/"
+SCREENSHOTS_LABEL = "Скриншоты проекта"
+SCREENSHOTS_LINK = (SCREENSHOTS_LABEL, SITE_URL + SCREENSHOTS_PATH)
+APPUSE_LINK = ("appuse.ru", "https://appuse.ru/")
 
 
 def make_favicon(path, size=256):
@@ -74,6 +82,8 @@ LINKS = [
     ("slavhol.ru", "http://slavhol.ru"),
     ("servicetrend.ru", "https://servicetrend.ru"),
     ("koderstudio.ru", "https://koderstudio.ru"),
+    APPUSE_LINK,
+    SCREENSHOTS_LINK,
     ("medsenger.ru", "https://medsenger.ru"),
     ("pg16-cert-prep", "https://github.com/novozhilovsergeydisk/pg16-cert-prep"),
     ("vox-platform", "https://github.com/novozhilovsergeydisk/vox-platform"),
@@ -81,11 +91,12 @@ LINKS = [
 ]
 
 
-def linkify(text):
-    pairs = sorted(LINKS, key=lambda x: -len(x[0]))
+def linkify(text, links=LINKS):
+    pairs = sorted(links, key=lambda x: -len(x[0]))
     pattern = re.compile("|".join(re.escape(d) for d, _ in pairs))
     urls = dict(pairs)
     return pattern.sub(lambda m: f'<a href="{urls[m.group(0)]}">{m.group(0)}</a>', text)
+
 
 # ---------------------------------------------------------------- данные ---
 HEADER = {
@@ -262,8 +273,11 @@ PRO_SKILLS = [
      "Ubuntu и Debian (включая Nginx/Apache, PHP-FPM, PostgreSQL, системные службы systemd, "
      "supervisor, безопасность fail2ban, ufw)."),
     ("Инструменты разработки: Windsurf, Visual Studio Code, JetBrains PhpStorm, Git и Bash."),
-    ("Веду собственный проект Koder Studio (koderstudio.ru) — разработка сайтов, "
-     "информационных систем и инфраструктуры."),
+    ("Развиваю собственный проект Koder Studio (koderstudio.ru). Разрабатываю сайты "
+     "и информационные системы, настраиваю серверную инфраструктуру."),
+    ("Тренажёр для подготовки к сертификации по PostgreSQL 16 (appuse.ru): "
+     "тренировки по темам, пробные экзамены и отслеживание прогресса. "
+     + SCREENSHOTS_LABEL + "."),
     ("PHP и Laravel: понимание развития PHP от 5.3 до 8.x, включая пространства имён, "
      "анонимные функции, типизацию и JIT-компиляцию. Практический опыт работы с Laravel, "
      "понимание MVC-архитектуры, сервис-контейнера, middleware, очередей и событийной модели."),
@@ -373,10 +387,11 @@ def build_pdf(path):
 
 # ------------------------------------------------------------------ HTML ---
 def build_html(path, site=False):
-    e = html.escape
-    if site:
-        def e(s, _esc=html.escape):
-            return linkify(_esc(s))
+    links = [*LINKS, (SCREENSHOTS_LABEL, SCREENSHOTS_PATH)] if site else [APPUSE_LINK, SCREENSHOTS_LINK]
+
+    def e(s):
+        return linkify(html.escape(s), links)
+
     out = []
     head = ['<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8">']
     if site:
@@ -464,6 +479,48 @@ a { color: #1f7a4d; }
     with open(path, "w", encoding="utf-8") as f:
         f.write("".join(out))
 
+
+def add_docx_links(path, links):
+    # textutil сохраняет внешний вид HTML-ссылок, но теряет их адреса.
+    document_name = "word/document.xml"
+    relationships_name = "word/_rels/document.xml.rels"
+    with TemporaryDirectory(dir=Path(path).parent) as tempdir:
+        output = Path(tempdir) / "resume.docx"
+        with ZipFile(path) as source, ZipFile(output, "w") as target:
+            document = minidom.parseString(source.read(document_name))
+            relationships = minidom.parseString(source.read(relationships_name))
+            runs = document.getElementsByTagName("w:r")
+            for index, (label, url) in enumerate(links, 1):
+                matches = [run for run in runs if any(
+                    node.firstChild and node.firstChild.data == label
+                    for node in run.getElementsByTagName("w:t")
+                )]
+                if len(matches) != 1:
+                    raise ValueError(f"Не удалось однозначно найти ссылку в DOCX: {label}")
+                run, = matches
+                link_id = f"ResumeLink{index}"
+                link = document.createElement("w:hyperlink")
+                namespace = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+                link.setAttribute("xmlns:r", namespace)
+                link.setAttribute("r:id", link_id)
+                run.parentNode.replaceChild(link, run)
+                link.appendChild(run)
+
+                relationship = relationships.createElement("Relationship")
+                relationship.setAttribute("Id", link_id)
+                relationship.setAttribute("Type", namespace + "/hyperlink")
+                relationship.setAttribute("Target", url)
+                relationship.setAttribute("TargetMode", "External")
+                relationships.documentElement.appendChild(relationship)
+
+            target.writestr(document_name, document.toxml(encoding="UTF-8"))
+            target.writestr(relationships_name, relationships.toxml(encoding="UTF-8"))
+            for member in source.infolist():
+                if member.filename not in (document_name, relationships_name):
+                    target.writestr(member, source.read(member))
+        output.replace(path)
+
+
 if __name__ == "__main__":
     import os
     outdir = os.path.dirname(os.path.abspath(__file__))
@@ -474,6 +531,7 @@ if __name__ == "__main__":
     docx_path = os.path.join(outdir, "Новожилов Сергей Юрьевич.docx")
     subprocess.run(["textutil", "-convert", "docx", html_path, "-output", docx_path],
                    check=True)
+    add_docx_links(docx_path, [APPUSE_LINK, SCREENSHOTS_LINK])
     os.remove(html_path)
     build_html(os.path.join(outdir, "index.html"), site=True)
     make_favicon(os.path.join(outdir, "favicon.png"))
