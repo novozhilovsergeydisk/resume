@@ -14,14 +14,14 @@
 
 ## Профессиональные навыки
 
-- **Инструменты разработки:** Windsurf, Visual Studio Code, JetBrains PhpStorm, Git, bash-скрипты. Активная работа с системами искусственного интеллекта — Claude (Claude Code, Claude CLI), ChatGPT (Codex, Codex CLI), Gemini, Kimi K3 Pro, Qwen Code — для автоматизации процессов разработки (генерация и рефакторинг кода, анализ логов, документирование).
-- **Фреймворки:** практический опыт работы с Laravel — MVC-архитектура, сервис-контейнер, middleware, очереди, событийная модель.
-- **Базы данных:** уверенная работа с PostgreSQL (оптимизация запросов, индексация, репликация, резервное копирование), опыт с MySQL и Oracle.
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+: const/let, стрелочные функции, деструктуризация, модули import/export, async/await, Promise).
-- **Серверная инфраструктура:** развёртывание и поддержка веб-приложений на Ubuntu/Debian (Nginx/Apache, PHP-FPM, PostgreSQL, systemd, supervisor, fail2ban, ufw).
-- **PHP:** понимание эволюции языка от версии 5.3 до 8.x, включая ключевые изменения (пространства имён, анонимные функции, типизация, JIT-компиляция).
-- **Дополнительно:** Node.js (приложения, чат-сервисы, телеграм-боты).
-- **Собственный проект:** Koder Studio (koderstudio.ru) — разработка сайтов, информационных систем и инфраструктуры.
+- **Применение ИИ в разработке:** использую ИИ-инструменты для генерации и рефакторинга кода, анализа логов и подготовки технической документации. Работаю с Claude (Claude Code, Claude CLI), ChatGPT (Codex, Codex CLI), Gemini, Kimi K3 Pro и Qwen Code.
+- **Node.js:** разработка приложений, чат-сервисов и Telegram-ботов, опыт работы с аудио- и видеосвязью на WebRTC в Medsenger.
+- **JavaScript и вёрстка:** ES6+ (const/let, стрелочные функции, деструктуризация, модули import/export, async/await, Promise), HTML5 и CSS3.
+- **Базы данных:** уверенная работа с PostgreSQL (включая оптимизацию запросов, индексацию, репликацию, резервное копирование), а также опыт с MySQL и Oracle.
+- **Серверная инфраструктура:** настройка, развёртывание и поддержка веб-приложений на Ubuntu и Debian (включая Nginx/Apache, PHP-FPM, PostgreSQL, системные службы systemd, supervisor, безопасность fail2ban, ufw).
+- **Инструменты разработки:** Windsurf, Visual Studio Code, JetBrains PhpStorm, Git и Bash.
+- Веду собственный проект Koder Studio (koderstudio.ru) — разработка сайтов, информационных систем и инфраструктуры.
+- **PHP и Laravel:** понимание развития PHP от 5.3 до 8.x, включая пространства имён, анонимные функции, типизацию и JIT-компиляцию. Практический опыт работы с Laravel, понимание MVC-архитектуры, сервис-контейнера, middleware, очередей и событийной модели.
 
 ---
 
@@ -33,7 +33,7 @@
 - **Аутсорс-разработка для заказчика от компании ООО «Телепат» (последний год):** проект [«Система управления заявками»](https://lan-install.online) — проектирование, разработка и развитие системы.
 - Интеграция «Системы управления заявками» со складом и сайтом [«Монтаж оборудования и слаботочных систем»](https://lan-install.ru).
 - **Автоматизация процессов разработки с помощью систем искусственного интеллекта:** **Claude (Claude Code, Claude CLI), ChatGPT (Codex, Codex CLI), Gemini, Kimi K3 Pro, Qwen Code** — генерация и рефакторинг кода, автоматизация рутинных задач, анализ логов и ускорение документирования.
-- Разработка и поддержка флагманского проекта телемедицины [medsenger.ru](https://medsenger.ru) на PHP: проектирование архитектуры, реализация прикладной логики, интеграция с внешними API.
+- Разработка и поддержка телемедицинской платформы [medsenger.ru](https://medsenger.ru): проектирование архитектуры, реализация прикладной логики на PHP и интеграция с внешними API. Для аудио- и видеозвонков между врачом и пациентом команда использовала Node.js и WebRTC.
 - Поддержка и доработка старых проектов: рефакторинг кода, оптимизация производительности, устранение ошибок.
 - Администрирование серверной инфраструктуры на базе Linux (Ubuntu/Debian): настройка и обслуживание веб-серверов (Nginx/Apache), управление процессами, мониторинг, обеспечение отказоустойчивости и безопасности.
 - Настройка, развёртывание и поддержка корпоративного почтового сервера на основе iRedMail (Postfix, Dovecot, Roundcube, PostgreSQL в качестве бэкенда), включая конфигурацию TLS, DKIM, SPF, веб-интерфейсов администрирования.
@@ -81,7 +81,7 @@
 
 ## Навыки
 
-PHP · MySQL · HTML5 · CSS3 · JavaScript · Laravel · Node.js · PostgreSQL · ORACLE · Power BI · phpMyAdmin · Git · Docker · Bash · Ubuntu · Debian · Nginx · AI CLI-инструменты (Claude Code, Claude CLI, ChatGPT Codex, Codex CLI, Gemini, Kimi K3 Pro, Qwen Code) · Visual Studio Code · Windsurf · JetBrains PhpStorm
+AI CLI-инструменты · Claude Code · Claude CLI · ChatGPT Codex · Codex CLI · Gemini · Kimi K3 Pro · Qwen Code · Node.js · JavaScript · HTML5 · CSS3 · PostgreSQL · MySQL · Oracle · Power BI · phpMyAdmin · Git · Docker · Bash · Ubuntu · Debian · Nginx · Visual Studio Code · Windsurf · JetBrains PhpStorm · PHP · Laravel
 
 ## Личные качества
 

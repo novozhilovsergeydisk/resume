@@ -238,11 +238,11 @@ TRAINING = {
 }
 
 SKILLS = [
-    "PHP", "MySQL", "HTML5", "CSS3", "JavaScript", "Laravel", "Node.js",
-    "PostgreSQL", "ORACLE", "Power BI", "phpMyAdmin", "Git", "Docker", "Bash", "Ubuntu", "Debian",
-    "Nginx", "AI CLI-инструменты", "Claude Code", "Claude CLI", "ChatGPT Codex",
-    "Codex CLI", "Gemini", "Kimi K3 Pro", "Qwen Code", "Visual Studio Code", "Windsurf",
-    "JetBrains PhpStorm",
+    "AI CLI-инструменты", "Claude Code", "Claude CLI", "ChatGPT Codex", "Codex CLI",
+    "Gemini", "Kimi K3 Pro", "Qwen Code", "Node.js", "JavaScript", "HTML5", "CSS3",
+    "PostgreSQL", "MySQL", "Oracle", "Power BI", "phpMyAdmin", "Git", "Docker", "Bash",
+    "Ubuntu", "Debian", "Nginx", "Visual Studio Code", "Windsurf", "JetBrains PhpStorm",
+    "PHP", "Laravel",
 ]
 
 DRIVE = "Права категории B"
@@ -252,20 +252,21 @@ PRO_SKILLS = [
     ("Применение ИИ в разработке: использую ИИ-инструменты для генерации и рефакторинга "
      "кода, анализа логов и подготовки технической документации. Работаю с Claude "
      "(Claude Code, Claude CLI), ChatGPT (Codex, Codex CLI), Gemini, Kimi K3 Pro и Qwen Code."),
+    ("Node.js: разработка приложений, чат-сервисов и Telegram-ботов, опыт работы "
+     "с аудио- и видеосвязью на WebRTC в Medsenger."),
+    ("JavaScript и вёрстка: ES6+ (const/let, стрелочные функции, деструктуризация, "
+     "модули import/export, async/await, Promise), HTML5 и CSS3."),
     ("Базы данных: уверенная работа с PostgreSQL (включая оптимизацию запросов, индексацию, "
      "репликацию, резервное копирование), а также опыт с MySQL и Oracle."),
-    ("Frontend: владение HTML5, CSS3, JavaScript (современный стандарт ES6+: const/let, "
-     "стрелочные функции, деструктуризация, модули import/export, async/await, Promise)."),
     ("Серверная инфраструктура: настройка, развёртывание и поддержка веб-приложений на "
      "Ubuntu и Debian (включая Nginx/Apache, PHP-FPM, PostgreSQL, системные службы systemd, "
      "supervisor, безопасность fail2ban, ufw)."),
-    ("Node.js: разработка приложений, чат-сервисов и Telegram-ботов, опыт работы "
-     "с аудио- и видеосвязью на WebRTC в Medsenger."),
-    ("Серверная разработка: PHP и Laravel. Практический опыт работы с Laravel, "
-     "понимание MVC-архитектуры, сервис-контейнера, middleware, очередей и событийной модели."),
     ("Инструменты разработки: Windsurf, Visual Studio Code, JetBrains PhpStorm, Git и Bash."),
     ("Веду собственный проект Koder Studio (koderstudio.ru) — разработка сайтов, "
      "информационных систем и инфраструктуры."),
+    ("PHP и Laravel: понимание развития PHP от 5.3 до 8.x, включая пространства имён, "
+     "анонимные функции, типизацию и JIT-компиляцию. Практический опыт работы с Laravel, "
+     "понимание MVC-архитектуры, сервис-контейнера, middleware, очередей и событийной модели."),
 ]
 
 QUALITIES_TITLE = "Личные качества"
