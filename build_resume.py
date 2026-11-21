@@ -42,6 +42,7 @@ SCREENSHOTS_PATH = "postgresql16/"
 SCREENSHOTS_LABEL = "Скриншоты проекта"
 SCREENSHOTS_LINK = (SCREENSHOTS_LABEL, SITE_URL + SCREENSHOTS_PATH)
 APPUSE_LINK = ("appuse.ru", "https://appuse.ru/")
+VOXTEXT_LINK = ("voxtext.ru", "https://voxtext.ru/")
 
 
 def make_favicon(path, size=256):
@@ -82,6 +83,7 @@ LINKS = [
     ("slavhol.ru", "http://slavhol.ru"),
     ("servicetrend.ru", "https://servicetrend.ru"),
     ("koderstudio.ru", "https://koderstudio.ru"),
+    VOXTEXT_LINK,
     APPUSE_LINK,
     SCREENSHOTS_LINK,
     ("medsenger.ru", "https://medsenger.ru"),
@@ -273,6 +275,8 @@ PRO_SKILLS = [
      "Ubuntu и Debian (включая Nginx/Apache, PHP-FPM, PostgreSQL, системные службы systemd, "
      "supervisor, безопасность fail2ban, ufw)."),
     ("Инструменты разработки: Windsurf, Visual Studio Code, JetBrains PhpStorm, Git и Bash."),
+    ("VoxText (voxtext.ru) — сервис ИИ-транскрибации аудио и видео. "
+     "Поддерживает загрузку файлов, обработку по ссылке и экспорт в TXT, DOCX, SRT и VTT."),
     ("Развиваю собственный проект Koder Studio (koderstudio.ru). Разрабатываю сайты "
      "и информационные системы, настраиваю серверную инфраструктуру."),
     ("Тренажёр для подготовки к сертификации по PostgreSQL 16 (appuse.ru): "
@@ -387,7 +391,8 @@ def build_pdf(path):
 
 # ------------------------------------------------------------------ HTML ---
 def build_html(path, site=False):
-    links = [*LINKS, (SCREENSHOTS_LABEL, SCREENSHOTS_PATH)] if site else [APPUSE_LINK, SCREENSHOTS_LINK]
+    document_links = [VOXTEXT_LINK, APPUSE_LINK, SCREENSHOTS_LINK]
+    links = [*LINKS, (SCREENSHOTS_LABEL, SCREENSHOTS_PATH)] if site else document_links
 
     def e(s):
         return linkify(html.escape(s), links)
@@ -531,7 +536,7 @@ if __name__ == "__main__":
     docx_path = os.path.join(outdir, "Новожилов Сергей Юрьевич.docx")
     subprocess.run(["textutil", "-convert", "docx", html_path, "-output", docx_path],
                    check=True)
-    add_docx_links(docx_path, [APPUSE_LINK, SCREENSHOTS_LINK])
+    add_docx_links(docx_path, [VOXTEXT_LINK, APPUSE_LINK, SCREENSHOTS_LINK])
     os.remove(html_path)
     build_html(os.path.join(outdir, "index.html"), site=True)
     make_favicon(os.path.join(outdir, "favicon.png"))
