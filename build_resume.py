@@ -59,18 +59,14 @@ def make_og(path):
     img.save(path)
 
 LINKS = [
-    ("voucher.italymania.ru", "https://voucher.italymania.ru"),
     ("lan-install.online", "https://lan-install.online"),
     ("lan-install.ru", "https://lan-install.ru"),
     ("telepat.online", "https://telepat.online"),
     ("github.com/novozhilovsergeydisk/resume",
      "https://github.com/novozhilovsergeydisk/resume"),
     ("github.com/novozhilovsergeydisk", "https://github.com/novozhilovsergeydisk"),
-    ("softkey.lv", "https://softkey.lv"),
-    ("softkey.lt", "https://softkey.lt"),
     ("wishkey.ru", "https://wishkey.ru"),
-    ("slavhol.ru", "https://slavhol.ru"),
-    ("italymania.ru", "https://italymania.ru"),
+    ("slavhol.ru", "http://slavhol.ru"),
     ("servicetrend.ru", "https://servicetrend.ru"),
     ("koderstudio.ru", "https://koderstudio.ru"),
     ("medsenger.ru", "https://medsenger.ru"),
