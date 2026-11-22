@@ -34,15 +34,16 @@ SITE_SUMMARY = (
     "Использую ИИ-инструменты для рефакторинга кода, анализа логов и подготовки "
     "технической документации."
 )
-OG_DESC = ("Web-разработчик / Full-stack разработчик, 19 лет опыта: PHP, PostgreSQL, Laravel, "
-           "Linux-инфраструктура. Автоматизация процессов разработки с помощью ИИ "
-           "(Claude, ChatGPT, Gemini, Kimi, Qwen).")
+OG_DESC = ("Full-stack-разработчик. Применяю ИИ для аудита безопасности, подготовки тестов "
+           "и рефакторинга кода. Node.js, PostgreSQL, PHP, Laravel, Linux.")
 SITE_URL = "https://novozhilovsergeydisk.github.io/resume/"
 SCREENSHOTS_PATH = "postgresql16/"
 SCREENSHOTS_LABEL = "Скриншоты проекта"
 SCREENSHOTS_LINK = (SCREENSHOTS_LABEL, SITE_URL + SCREENSHOTS_PATH)
 APPUSE_LINK = ("appuse.ru", "https://appuse.ru/")
 VOXTEXT_LINK = ("voxtext.ru", "https://voxtext.ru/")
+KODER_LINK = ("koderstudio.ru", "https://koderstudio.ru")
+PROJECT_LINKS = [VOXTEXT_LINK, APPUSE_LINK, SCREENSHOTS_LINK, KODER_LINK]
 
 
 def make_favicon(path, size=256):
@@ -65,11 +66,11 @@ def make_og(path):
     f_small = ImageFont.truetype(FONTS_DIR + "Arial.ttf", 34)
     d.rectangle([0, 0, 14, 630], fill="#2f9e63")
     d.text((70, 140), "Новожилов Сергей Юрьевич", font=f_name, fill="white")
-    d.text((70, 250), "PHP-разработчик / Full-stack Developer", font=f_role, fill="#9fd4b8")
-    d.text((70, 360), "19 лет опыта · PHP · PostgreSQL · Laravel", font=f_small, fill="#c8cfd6")
-    d.text((70, 420), "Автоматизация процессов разработки с помощью ИИ", font=f_small,
+    d.text((70, 250), "Full-stack-разработчик", font=f_role, fill="#9fd4b8")
+    d.text((70, 360), "Применение ИИ в разработке", font=f_small, fill="#c8cfd6")
+    d.text((70, 420), "Аудит безопасности · Тесты · Рефакторинг", font=f_small,
            fill="#c8cfd6")
-    d.text((70, 480), "Claude · ChatGPT · Gemini · Kimi · Qwen", font=f_small, fill="#8a94a0")
+    d.text((70, 480), "Node.js · PostgreSQL · PHP · Laravel", font=f_small, fill="#8a94a0")
     img.save(path)
 
 LINKS = [
@@ -82,7 +83,7 @@ LINKS = [
     ("wishkey.ru", "https://wishkey.ru"),
     ("slavhol.ru", "http://slavhol.ru"),
     ("servicetrend.ru", "https://servicetrend.ru"),
-    ("koderstudio.ru", "https://koderstudio.ru"),
+    KODER_LINK,
     VOXTEXT_LINK,
     APPUSE_LINK,
     SCREENSHOTS_LINK,
@@ -125,31 +126,28 @@ POSITION = {
     ],
 }
 
-EXPERIENCE_TITLE = "Опыт работы — 19 лет 2 месяца"
+EXPERIENCE_TITLE = "Опыт работы — около 18 лет 6 месяцев"
 
 JOBS = [
     {
         "company": "ООО «Телепат», telepat.online",
-        "period": "Октябрь 2018 — настоящее время",
-        "duration": "8 лет 8 месяцев",
+        "period": "Октябрь 2018 — октябрь 2026",
+        "duration": "8 лет",
         "location": "Москва",
         "industry": ("Информационные технологии, системная интеграция, интернет — "
                      "разработка программного обеспечения"),
         "position": "Программист — Разработчик PHP / Full-stack Developer",
         "bullets": [
-            ("Аутсорс-разработка для заказчика от компании ООО «Телепат» (последний год): "
-             "проект «Система управления заявками» (lan-install.online) — проектирование, "
-             "разработка и развитие системы."),
-            ("Интеграция «Системы управления заявками» со складом и сайтом "
-             "«Монтаж оборудования и слаботочных систем» (lan-install.ru)."),
-            ("Автоматизация процессов разработки с помощью систем искусственного интеллекта: "
-             "Claude (Claude Code, Claude CLI), ChatGPT (Codex, Codex CLI), Gemini, Kimi K3 Pro, "
-             "Qwen Code — генерация и рефакторинг кода, автоматизация рутинных задач, анализ "
-             "логов и ускорение документирования."),
+            ("Разрабатывал систему управления заявками (lan-install.online) на PHP (Laravel). "
+             "Интегрировал её со складским учётом и сайтом компании (lan-install.ru)."),
+            ("Применял ИИ-инструменты для аудита безопасности системы управления заявками, "
+             "подготовки тестов и рефакторинга кода."),
+            ("Работал над Telegram-уведомлениями и мониторингом системы. Laravel вызывает "
+             "серверные утилиты на C, а JavaScript отображает показатели в кабинете администратора."),
             ("Разработка и поддержка телемедицинской платформы medsenger.ru: проектирование "
              "архитектуры, реализация прикладной логики на PHP и интеграция с внешними API. "
-             "Для аудио- и видеозвонков между врачом и пациентом команда использовала Node.js "
-             "и WebRTC."),
+             "Вместе с коллегой работал над подсистемой видеозвонков на Node.js "
+             "и WebRTC, включая мобильную версию."),
             ("Поддержка и доработка старых проектов: рефакторинг кода, оптимизация "
              "производительности, устранение ошибок."),
             ("Администрирование серверной инфраструктуры на базе Linux (Ubuntu/Debian): "
@@ -176,7 +174,7 @@ JOBS = [
             "доработка и поддержка основного проекта softkey.ru и региональных сайтов;",
             "поддержка проекта wishkey.ru;",
             "оптимизация и рефакторинг кода;",
-            "написание SQL запросов, триггеров и хранимых процедур в СУБД Oracle;",
+            "написание SQL-запросов, триггеров и хранимых процедур в СУБД Oracle;",
             "документирование выполненного функционала;",
             "разработка отдельных витрин для вендоров: Лаборатория Касперского, ООО «Эльдорадо» "
             "и др.;",
@@ -193,7 +191,7 @@ JOBS = [
         "duration": "4 года 10 месяцев",
         "location": "Москва",
         "industry": "",
-        "position": "PHP программист",
+        "position": "PHP-разработчик",
         "bullets": [
             "разработка и поддержка сайта бронирования туров slavhol.ru;",
             "создание и продвижение сайтов премиального туризма (проект «Italymania»);",
@@ -237,8 +235,7 @@ TRAINING = {
         {
             "year": "2026",
             "org": "АНО ВО «Московский университет «Синергия»», Москва",
-            "program": "Программа «Аналитик данных нового поколения: SQL, ИИ и Power BI», "
-                       "в объёме 144 часов",
+            "program": "Программа «Аналитик данных нового поколения: SQL, ИИ и Power BI», 144 часа",
             "detail": "удостоверение о повышении квалификации, рег. № 162359 от 21.09.2026",
         },
         {
@@ -251,8 +248,7 @@ TRAINING = {
 }
 
 SKILLS = [
-    "AI CLI-инструменты", "Claude Code", "Claude CLI", "ChatGPT Codex", "Codex CLI",
-    "Gemini", "Kimi K3 Pro", "Qwen Code", "Node.js", "JavaScript", "HTML5", "CSS3",
+    "ИИ-инструменты", "Node.js", "JavaScript", "HTML5", "CSS3",
     "PostgreSQL", "MySQL", "Oracle", "Power BI", "phpMyAdmin", "Git", "Docker", "Bash",
     "Ubuntu", "Debian", "Nginx", "Visual Studio Code", "Windsurf", "JetBrains PhpStorm",
     "PHP", "Laravel",
@@ -265,8 +261,7 @@ PRO_SKILLS = [
     ("Применение ИИ в разработке: использую ИИ-инструменты для генерации и рефакторинга "
      "кода, анализа логов и подготовки технической документации. Работаю с Claude "
      "(Claude Code, Claude CLI), ChatGPT (Codex, Codex CLI), Gemini, Kimi K3 Pro и Qwen Code."),
-    ("Node.js: разработка приложений, чат-сервисов и Telegram-ботов, опыт работы "
-     "с аудио- и видеосвязью на WebRTC в Medsenger."),
+    ("Node.js: веб-приложения на Express и фоновые обработчики задач с Redis и BullMQ."),
     ("JavaScript и вёрстка: ES6+ (const/let, стрелочные функции, деструктуризация, "
      "модули import/export, async/await, Promise), HTML5 и CSS3."),
     ("Базы данных: уверенная работа с PostgreSQL (включая оптимизацию запросов, индексацию, "
@@ -275,16 +270,25 @@ PRO_SKILLS = [
      "Ubuntu и Debian (включая Nginx/Apache, PHP-FPM, PostgreSQL, системные службы systemd, "
      "supervisor, безопасность fail2ban, ufw)."),
     ("Инструменты разработки: Windsurf, Visual Studio Code, JetBrains PhpStorm, Git и Bash."),
-    ("VoxText (voxtext.ru) — сервис ИИ-транскрибации аудио и видео. "
-     "Поддерживает загрузку файлов, обработку по ссылке и экспорт в TXT, DOCX, SRT и VTT."),
-    ("Развиваю собственный проект Koder Studio (koderstudio.ru). Разрабатываю сайты "
-     "и информационные системы, настраиваю серверную инфраструктуру."),
-    ("Тренажёр для подготовки к сертификации по PostgreSQL 16 (appuse.ru): "
-     "тренировки по темам, пробные экзамены и отслеживание прогресса. "
-     + SCREENSHOTS_LABEL + "."),
     ("PHP и Laravel: понимание развития PHP от 5.3 до 8.x, включая пространства имён, "
      "анонимные функции, типизацию и JIT-компиляцию. Практический опыт работы с Laravel, "
      "понимание MVC-архитектуры, сервис-контейнера, middleware, очередей и событийной модели."),
+]
+
+PROJECTS_TITLE = "Собственные проекты"
+PROJECTS = [
+    ("VoxText (voxtext.ru)",
+     "Сервис транскрибации аудио и видео с загрузкой файлов, обработкой по ссылке "
+     "и экспортом в TXT, DOCX, SRT и VTT. Веб-приложение на Next.js, TypeScript "
+     "и PostgreSQL, очередь фоновых задач на Redis и BullMQ, распознавание речи "
+     "на Python с faster-whisper."),
+    ("Тренажёр для подготовки к сертификации по PostgreSQL 16 (appuse.ru)",
+     "Тренировки по темам, пробные экзамены и отслеживание прогресса. Сервер на "
+     "Node.js и Express, база на PostgreSQL, интерфейс на HTML, CSS и JavaScript. "
+     + SCREENSHOTS_LABEL + "."),
+    ("Koder Studio (koderstudio.ru)",
+     "Разрабатываю сайты и информационные системы, настраиваю серверную инфраструктуру. "
+     "Сайт студии на Next.js, React, TypeScript и Tailwind CSS."),
 ]
 
 QUALITIES_TITLE = "Личные качества"
@@ -293,7 +297,7 @@ QUALITIES = ("Самодисциплина, коммуникабельность
              "IT-решений на практике — в том числе с использованием возможностей "
              "искусственного интеллекта для повышения эффективности разработки.")
 
-UPDATED = "Резюме обновлено 20 ноября 2026"
+UPDATED = "Резюме обновлено 22 ноября 2026"
 
 # ------------------------------------------------------------- PDF-стили ---
 def st(name, **kw):
@@ -316,7 +320,7 @@ S = {
     "posname": st("posname", fontName="Arial-Bold", fontSize=9.5, leading=13,
                   textColor=colors.HexColor("#333d47")),
     "bullet": st("bullet", fontSize=9.5, leading=13.5, leftIndent=10, bulletIndent=0,
-                 spaceAfter=2.5),
+                 spaceAfter=2.5, allowWidows=0),
     "chip": st("chip", fontSize=9.5, leading=13, textColor=colors.HexColor("#0f151c")),
     "foot": st("foot", fontSize=8, leading=11, textColor=colors.HexColor("#8a94a0"),
                spaceBefore=8),
@@ -363,6 +367,11 @@ def build_pdf(path):
         for b in job["bullets"]:
             el.append(Paragraph("•&nbsp;&nbsp;" + linkify(html.escape(b)), S["bullet"]))
         el.append(Spacer(1, 6))
+    el.append(P(PROJECTS_TITLE, "sec"))
+    el.append(hr())
+    for name, description in PROJECTS:
+        el.append(P(name, "company"))
+        el.append(P(description))
     el.append(P(EDUCATION["title"], "sec"))
     el.append(hr())
     el.append(P(EDUCATION["degree"], "posname"))
@@ -391,8 +400,7 @@ def build_pdf(path):
 
 # ------------------------------------------------------------------ HTML ---
 def build_html(path, site=False):
-    document_links = [VOXTEXT_LINK, APPUSE_LINK, SCREENSHOTS_LINK]
-    links = [*LINKS, (SCREENSHOTS_LABEL, SCREENSHOTS_PATH)] if site else document_links
+    links = [*LINKS, (SCREENSHOTS_LABEL, SCREENSHOTS_PATH)] if site else PROJECT_LINKS
 
     def e(s):
         return linkify(html.escape(s), links)
@@ -463,6 +471,9 @@ a { color: #1f7a4d; }
         for b in job["bullets"]:
             out.append(f"<li>{e(b)}</li>")
         out.append("</ul>")
+    out.append(f"<h2>{e(PROJECTS_TITLE)}</h2>")
+    for name, description in PROJECTS:
+        out.append(f"<p class='company'>{e(name)}</p><p>{e(description)}</p>")
     out.append(f"<h2>{e(EDUCATION['title'])}</h2>")
     out.append(f"<p><b>{e(EDUCATION['degree'])}</b></p>")
     for ln in EDUCATION["lines"]:
@@ -536,7 +547,7 @@ if __name__ == "__main__":
     docx_path = os.path.join(outdir, "Новожилов Сергей Юрьевич.docx")
     subprocess.run(["textutil", "-convert", "docx", html_path, "-output", docx_path],
                    check=True)
-    add_docx_links(docx_path, [VOXTEXT_LINK, APPUSE_LINK, SCREENSHOTS_LINK])
+    add_docx_links(docx_path, PROJECT_LINKS)
     os.remove(html_path)
     build_html(os.path.join(outdir, "index.html"), site=True)
     make_favicon(os.path.join(outdir, "favicon.png"))
